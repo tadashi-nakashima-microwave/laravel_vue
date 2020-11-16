@@ -1,0 +1,54 @@
+
+version: '3'
+
+services:
+  php:
+    container_name: php
+    environment:
+      TZ: 'Asia/Tokyo'
+    build: ./php
+    volumes:
+    - /var/www
+
+  nginx:
+    container_name: nginx
+    environment:
+      TZ: 'Asia/Tokyo'
+    build: ./nginx
+    ports:
+    - 80:80
+    volumes_from:
+      - php
+    depends_on:
+    - php
+
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+    - /var/lib/mysql
+    - /etc/mysql/conf.d
+    - /docker-entrypoint-initdb.d
+    ports:
+    - 3306:3306
+
+  vue:
+    container_name: vue
+    environment:
+      TZ: 'Asia/Tokyo'
+    build: ./vue
+    tty: true
+    ports:
+    - 8080:8080
+    
+networks:
+  default:
+    external:
+      name: my-local-network
