@@ -146,7 +146,9 @@ docker
 
 ■Dockerでできないこと
 
-・基本的にはOSのGUIが使えない(X Windows Systemを使えばできる)
+・基本的にはコンテナの中のOSのGUIが使えない
+　(X Windows Systemを使えばできるとの情報もあるが、用途からしたらあまり意味がない。
+　　GUIを使いたければ、VirtualBoxなどの仮想マシンを使用するべき)
 ・スマフォアプリの開発
 （Dockerの中で動くのはLinux系OSのみ）
 ・組み込みシステムの開発
