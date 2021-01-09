@@ -585,6 +585,11 @@ https://qiita.com/ryuichi1208/items/6020cfabc92bd8153654
 複数のコンテナでネットワークを共有する
 
 
+git clone https://github.com/tadashi-nakashima/laravel_vue.git
+
+cd laravel_vue
+
+docker-compose up -d
 
 ■サーバレス
 
@@ -600,8 +605,20 @@ ECS CLI
 
 
 
+version: '3'
 
+services:
+  サービス1:
+    サービス設定
 
+  サービス2:
+    サービス設定
+
+  サービス3:
+    サービス設定
+
+networks:
+  ネットワーク設定
 
 
 ①市場の変化に合わせて柔軟かつ迅速にビジネスモデルを変更できず、デジタル競争の敗者になってしまう
